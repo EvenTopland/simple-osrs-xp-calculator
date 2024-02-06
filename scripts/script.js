@@ -140,7 +140,7 @@ targetLevelEl.addEventListener('change', () => {
   targetLevelEl.value = targetLevel;
   console.log(targetLevel);
 });
-
+// delete me
 calculateBtnEl.addEventListener('click', () => {
   for (let i = currentLevel; i <= targetLevel; ++i) {
     if (i >= 0 && i < Array.length) {
