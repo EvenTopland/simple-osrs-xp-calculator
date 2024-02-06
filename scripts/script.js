@@ -106,13 +106,27 @@ const xpTable = [
   13034431, // Level 99
 ];
 
-// Init levels
+// Inits
 let currentLevel = 1;
 let targetLevel = 99;
 let remainingXP = 0;
 
 currentLevelEl.value = currentLevel;
 targetLevelEl.value = targetLevel;
+
+calculateRemXP();
+
+// Functions
+function calculateRemXP() {
+  for (let i = currentLevel; i <= targetLevel; ++i) {
+    remainingXP += xpTable[i - 1];
+  }
+  remainingXP = remainingXP.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  remainingXP += ' xp';
+  remainingXPEl.innerHTML = remainingXP;
+  console.log(remainingXP);
+  remainingXP = 0;
+}
 
 // Event listeners
 currentLevelEl.addEventListener('change', () => {
@@ -126,6 +140,7 @@ currentLevelEl.addEventListener('change', () => {
   }
   currentLevelEl.value = currentLevel;
   console.log(currentLevel);
+  calculateRemXP();
 });
 
 targetLevelEl.addEventListener('change', () => {
@@ -139,13 +154,9 @@ targetLevelEl.addEventListener('change', () => {
   }
   targetLevelEl.value = targetLevel;
   console.log(targetLevel);
+  calculateRemXP();
 });
 
-calculateBtnEl.addEventListener('click', () => {
-  for (let i = currentLevel; i <= targetLevel; ++i) {
-    remainingXP += xpTable[i - 1];
-  }
-  remainingXPEl.innerHTML = remainingXP;
-  console.log(remainingXP);
-  remainingXP = 0;
-});
+// calculateBtnEl.addEventListener('click', () => {
+//   calculateRemXP();
+// });
