@@ -143,9 +143,9 @@ targetLevelEl.addEventListener('change', () => {
 
 calculateBtnEl.addEventListener('click', () => {
   for (let i = currentLevel; i <= targetLevel; ++i) {
-    if (i >= 0 && i < Array.length) {
-      remainingXP += xpTable[i];
-    }
+    remainingXP += xpTable[i - 1];
   }
+  remainingXPEl.innerHTML = remainingXP;
   console.log(remainingXP);
+  remainingXP = 0;
 });
